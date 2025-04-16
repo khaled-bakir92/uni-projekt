@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import { useRouter } from 'vue-router' // Router importieren
 
+const router = useRouter() // Router-Instanz erstellen
 const email = ref('')
 const password = ref('')
 const showPassword = ref(false)
@@ -12,6 +14,9 @@ const togglePassword = () => {
 const handleLogin = () => {
   // Handle login logic here
   console.log('Login submitted:', { email: email.value, password: password.value })
+  
+  // Nach erfolgreicher Anmeldung zur /cards Route navigieren
+  router.push('/cards')
 }
 </script>
 

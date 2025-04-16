@@ -4,6 +4,9 @@ export default {
     "./src/**/*.{vue,js,ts,jsx,tsx}",
   ],
   theme: {
+    fontFamily: {
+      sans: ['Inter', 'sans-serif'],
+    },
     extend: {
       // Farben
       colors: {
@@ -19,6 +22,7 @@ export default {
          primary: '#2B5D6F',
          'antwort-hintergrund': '#E4F8F0',
          'frage-hintergrund': '#C8D6DE',
+         'card.border': '#2B5D6F',
  
          // Hintergrundfarben
          'notizen-hintergrund': 'rgba(152, 178, 194, 0.25)', // 25% Opacity
@@ -26,26 +30,21 @@ export default {
          'navbar-hintergrund': '#04364D',
          'tag-dashboard-deactive': '#2B5D6F',
          'tag-dashboard-active': '#E4E8EC',
- 
-         // Selbsteinschätzung-Farben
-         'selbsteinschaetzung': {
-           fremd: '#C85200',
-           ansatzhaft: '#E48646',
-           vertraut: '#6B8EA4',
-           bekannt: '#366785'  
-         },
 
         gray: {
           text: '#6C6C6C'
         }
       },
-      // Benutzerdefinierte Breakpoints
+      dropShadow: {
+        'custom': '0 4px 4px rgba(0, 0, 0, 0.25)',
+      },
+      // Breakpoints
       screens: {
         mobile: { max: '639px' },
         tablet: '640px',
         laptop: '1024px'
       },
-      // Benutzerdefinierte Font Sizes inkl. Line-Height
+
       fontSize: {
         // Mobile
         'mobile-extralight': ['12px', { lineHeight: '20px' }],
