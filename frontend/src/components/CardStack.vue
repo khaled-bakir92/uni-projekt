@@ -1,19 +1,36 @@
 <script setup lang="ts">
+import { ref, onMounted } from 'vue'
+
 interface Props {
   title: string
   description: string
   subject: string
   progress: number
-  tag?: 'LexMea' | 'Professor' | 'Custom'   // ←  'Custom' ergänzt
+  tag?: 'LexMea' | 'Professor' | 'Custom'  
 }
 
-defineProps<Props>()
+const { title, description, subject, progress, tag } = defineProps<Props>()
+
+const _presetColors = ['#C85200', '#E48646', '#6B8EA4', '#34A372']
+const circleColor = ref<string>('')
+
+function getNextColor(): string {
+  if (_presetColors.length > 0) {
+    const idx = Math.floor(Math.random() * _presetColors.length)
+    return _presetColors.splice(idx, 1)[0]
+  }
+  return `#${Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0')}`
+}
+
+onMounted(() => {
+  circleColor.value = getNextColor()
+})
 </script>
 
 <template>
   <div class="relative rounded-[10px] border border-card.border p-4">
     <div class="mb-4 flex items-center gap-3">
-      <div class="h-4 w-4 rounded-full bg-[#4A90E2]"></div>
+      <div class="h-4 w-4 rounded-full" :style="{ backgroundColor: circleColor }"></div>
       <span class="text-sm text-gray-600">{{ subject }}</span>
     </div>
 
@@ -22,7 +39,7 @@ defineProps<Props>()
         class="rounded-lg bg-gray-100 px-4 py-1 text-sm font-medium"
         :class="{
           'text-gray-700': tag === 'LexMea',
-          'text-gray-600': tag === 'Professor' || tag === 'Custom'   /* ←  Anführungszeichen + Logik */
+          'text-gray-600': tag === 'Professor' || tag === 'Custom'
         }"
       >
         {{ tag }}
