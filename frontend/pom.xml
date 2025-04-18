@@ -6,9 +6,10 @@
     <packaging>pom</packaging>
 
     <parent>
-        <groupId>de.techfak.gse</groupId>
-        <artifactId>template</artifactId>
+        <groupId>de.techfak.gpse-3-2</groupId>
+        <artifactId>LexArtes</artifactId>
         <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
     <properties>
